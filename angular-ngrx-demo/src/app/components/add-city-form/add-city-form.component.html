@@ -1,0 +1,40 @@
+<div class="sign-up-form-container">
+  <div class="sign-up-form">
+    <form [formGroup]="addCityForm" (ngSubmit)="onSubmit()">
+      <!-- City Field -->
+      <label for="city Name">City Name:</label>
+      <input
+        formControlName="cityname"
+        id="cityname"
+        type="text"
+        placeholder="Enter the city name"
+      />
+
+      <!-- Image Field -->
+      <label for="image">Image:</label>
+      <input
+        formControlName="image"
+        id="image"
+        type="text"
+        placeholder="Enter an image"
+      />
+
+      <!-- Description Field -->
+      <label for="description">Description:</label>
+      <input
+        formControlName="description"
+        id="description"
+        type="text"
+        placeholder="Enter your description"
+      />
+
+      <!-- Buttons -->
+      <div class="button-wrapper">
+        <button type="button" class="btn btn-cancel" (click)="cancel()">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary">Add city</button>
+      </div>
+    </form>
+  </div>
+</div>

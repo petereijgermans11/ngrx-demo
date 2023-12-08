@@ -1,0 +1,30 @@
+<ng-container
+    *ngIf="{
+        cities: cities$ | async,
+        isLoading: isLoading$ | async,
+        mode: mode$ | async,
+        activeCity: activeCity$ | async
+    } as data"
+>
+    <div class="App">
+        <div *ngIf="data.mode === Mode.ShowCase">
+            <app-addbutton
+              [mode]="data.mode"
+              (changeMode)="modeHandler($event)"
+            ></app-addbutton>
+ 
+            <nav>
+                <app-list
+                  [citiesList]="data.cities"
+                  [activeCity]="data.cities?.[0]"
+                  (setNewActiveCity)="setNewActiveCity($event)"
+                ></app-list>
+              </nav>
+
+              <app-showcase [activeCity]="data.activeCity"></app-showcase>
+        </div>
+        <div *ngIf="data.mode === Mode.Add">
+            <app-add-city-form (cancelForm)="modeHandler(Mode.ShowCase)"></app-add-city-form>
+        </div>
+    </div>
+</ng-container>
