@@ -18,9 +18,7 @@ export class AppComponent implements OnInit {
     activeCity$:  Observable<ICity>;
     Mode = Mode;
 
-    constructor(private readonly store: Store) {
-
-    }
+    constructor(private readonly store: Store) {}
 
     ngOnInit(): void {
         this.initDispatch();
@@ -39,9 +37,6 @@ export class AppComponent implements OnInit {
         this.activeCity$ = this.store.pipe(select(selectActiveCity));
     }
 
-    public setNewActiveCity(city: ICity) {
-        this.store.dispatch(setActiveCity({city}));
-    }
 
     public modeHandler(mode: Mode) {
         this.store.dispatch(setMode({ mode }));
